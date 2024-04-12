@@ -58,3 +58,4 @@ This method will transpose your sparse matrix. An important note is that you are
 
 ### Change An Element 
 This method takes the address of an element and its new value and changes the value to the new one.
+ f
