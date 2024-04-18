@@ -1,0 +1,133 @@
+import math
+from typing import Dict, Tuple, Optional, List
+
+class _MatrixElement:
+      def __init__(self, row ,col, value):
+          self.row = row
+          self.col = col
+          self.value = value
+
+class SparseMatrix:
+      def __init__(self, matrix =None):
+          self.matrix =matrix
+          
+          
+       
+    
+      def __displayMatrix__(self): 
+      
+          for row in self.matrix: 
+            for element in row: 
+               print(element, end =" ") 
+            print() 
+  
+# function to convert the matrix  
+# into a sparse matrix 
+      def __convertToSparseMatrix__(self): 
+  
+    # creating an empty sparse  
+    # matrix list 
+          sparseMatrix =[] 
+  
+    # searching values greater  
+    # than zero 
+          for i in range(len(self.matrix)): 
+              for j in range(len(self.matrix[0])): 
+                  if self.matrix[i][j] != 0 : 
+  
+                # creating a temporary 
+                # sublist 
+                      temp = [] 
+  
+                # appending row value, column  
+                # value and element into the  
+                # sublist  
+                      temp.append(i) 
+                      temp.append(j) 
+                      temp.append(self.matrix[i][j]) 
+  
+                # appending the sublist into 
+                # the sparse matrix list 
+                      sparseMatrix.append(temp) 
+  
+    # displaying the sparse matrix 
+          print("\nSparse Matrix: ")  
+          for row in sparseMatrix: 
+            for element in row: 
+               print(element, end =" ") 
+            print()     
+
+      def transpose(self,A): 
+ 
+        for i in range(4): 
+         for j in range(i+1, 4): 
+          A[i][j], A[j][i] = A[j][i], A[i][j] 
+
+        print("Modified matrix is") 
+        for i in range(4): 
+         print()
+         for j in range(5): 
+          print(A[j][i], " ", end='') 
+          
+
+
+
+      def __convertToSparseMatrix1__(self): 
+  
+    # creating an empty sparse  
+    # matrix list 
+          sparseMatrix =[] 
+  
+    # searching values greater  
+    # than zero 
+          for i in range(len(self.matrix)): 
+              for j in range(len(self.matrix[0])): 
+                  if self.matrix[i][j] != 0 : 
+  
+                # creating a temporary 
+                # sublist 
+                      temp = [] 
+  
+                # appending row value, column  
+                # value and element into the  
+                # sublist  
+                      temp.append(i) 
+                      temp.append(j) 
+                      temp.append(self.matrix[i][j]) 
+  
+                # appending the sublist into 
+                # the sparse matrix list 
+                      sparseMatrix.append(temp) 
+
+          for i in range(5): 
+                  for j in range(i+1, 3): 
+                   sparseMatrix[j][i], sparseMatrix[i][j] = sparseMatrix[i][j], sparseMatrix[j][i] 
+
+                  print("sparse transpose is") 
+                  for i in range(5): 
+                   print()
+                   for j in range(3): 
+                    print(sparseMatrix[i][j], " ", end='')
+                      
+# driver code 
+
+
+
+
+
+
+
+if __name__ == "__main__":
+   
+  test_dens_sparse = SparseMatrix()
+  normalMatrix =[[1, 0, 0, 0],  
+               [0, 2, 0, 0],  
+               [0, 0, 3, 0],  
+               [0, 0, 0, 4],  
+               [5, 0, 0, 0]]  
+  
+
+
+print(SparseMatrix(normalMatrix).__convertToSparseMatrix__())
+print(SparseMatrix(normalMatrix).__convertToSparseMatrix1__())
+print(SparseMatrix(normalMatrix).transpose(normalMatrix))
